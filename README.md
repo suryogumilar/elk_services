@@ -32,3 +32,13 @@ Cek melalui [http://localhost:9200/_cat/indices](http://localhost:9200/_cat/indi
 
 Cek juga pada log:   
 `docker-compose --project-name elk_services -f ./docker-compose-elk.yml logs --timestamp --follow elasticsearch-service`
+
+#### Akses Kibana
+Kibana bisa diakses di [http://localhost:5601](http://localhost:5601)
+
+
+## referensi
+
+ - https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html
+ - https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html
+ - https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-log.html
