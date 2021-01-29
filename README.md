@@ -3,9 +3,18 @@
 Docker compose file dan folder konfigurasi untuk menjalankan elastic search services.   
 ELK = Elasticsearch, Kibana, Logstash.
 
-#### Logstash environment
+#### set environment
 untuk menjalankan docker-compose terlebih dahulu set environment workdir yang berisi log untuk diproses
 ```bash
+#### untuk elasticsearch environment
+
+# pada windows 
+SET elasticsearch_data=./../elastic_search
+# pada linux
+elasticsearch_data=./../elastic_search
+
+
+### untuk environment logstash
 # pada windows
 SET workdir=C:\Worksite\
 
@@ -39,6 +48,12 @@ How to stop but do not remove containers:
 
 ### Check services
 
+#### cek config melalui docker-compose
+   
+`docker-compose --project-name elk_services -f ./docker-compose-elk.yml config`
+
+#### dengan akses url
+   
 Cek melalui [http://localhost:9200/_cat/health](http://localhost:9200/_cat/health?pretty=true) untuk health status  
 Cek melalui [http://localhost:9200/_cat/indices](http://localhost:9200/_cat/indices) untuk daftar index yg terdapat di elastic   
 Cek melalui [http://127.0.0.1:9200/_cat/nodes?v&pretty](http://127.0.0.1:9200/_cat/nodes?v&pretty) untuk daftar nodes dan loadnya   
@@ -115,6 +130,26 @@ maka struktur datanya:
 #### Grok Debuger
 bisa diakses melalui:   
 [http://localhost:5601/app/dev_tools#/grokdebugger](http://localhost:5601/app/dev_tools#/grokdebugger)
+
+### Setting Kibana dashboard
+berikut contoh langkah setting dashboard (pie chart presentase)
+ - akses [home dashboard kibana](http://localhost:5601/app/home) 
+ - akses [index management](http://localhost:5601/app/management/data/index_management/indices)   
+   pastikan log dari logstash ada dalam daftar indices
+ - akses [index pattern](http://localhost:5601/app/management/kibana/indexPatterns) untuk membuat entry (Create index pattern)   
+     - Define an index pattern: pilih index logstash yang tersedia 
+     - pilih index pattern id 
+ - akses [dashboard](http://localhost:5601/app/dashboards) untuk membuat tampilan
+     - create new dashboard
+     - Add an existing or new object to dashboard
+     - pilih visualisasinya, misal piechart
+     - pilih indexnya, misal logstash
+     - add bucket untuk piechart berdasar kebutuhan, misal hitung loglevel error, info dll
+         - split slices untuk tampilkan persentase tiap log level
+         - pilih terms sebagai agregasi dan pada field pilih keyword
+         - orderby adalah metric: count 
+         - klik update
+         - save
 
 ## referensi
 
