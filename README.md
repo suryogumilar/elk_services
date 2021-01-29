@@ -27,8 +27,10 @@ How to stop but do not remove containers:
 
 ### Check services
 
-Cek melalui [http://localhost:9200/_cat/health](http://localhost:9200/_cat/health) untuk health status  
+Cek melalui [http://localhost:9200/_cat/health](http://localhost:9200/_cat/health?pretty=true) untuk health status  
 Cek melalui [http://localhost:9200/_cat/indices](http://localhost:9200/_cat/indices) untuk daftar index yg terdapat di elastic
+Cek melalui [http://127.0.0.1:9200/_cat/nodes?v&pretty](http://127.0.0.1:9200/_cat/nodes?v&pretty) untuk daftar nodes dan loadnya   
+Untuk info cluster, jenis dan versi menggunakan [http://127.0.0.1:9200/](http://127.0.0.1:9200/)
 
 Cek juga pada log:   
 `docker-compose --project-name elk_services -f ./docker-compose-elk.yml logs --timestamp --follow elasticsearch-service`

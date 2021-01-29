@@ -28,3 +28,17 @@ services:
       - ./kibana/config/:/usr/share/kibana/config/
     labels:
       ELK_STACK: "true"
+  logstash-service:
+    container_name: logstash-service
+    image: docker.elastic.co/logstash/logstash:7.10.2
+    volumes:
+      - ./logstash/conf/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/pipeline/:/usr/share/logstash/pipeline/
+    ports:
+      - 9600:9600
+      - "5044:5044/tcp"
+      - "5044:5044/udp"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    labels:
+      ELK_STACK: "true"
