@@ -3,9 +3,21 @@
 Docker compose file dan folder konfigurasi untuk menjalankan elastic search services.   
 ELK = Elasticsearch, Kibana, Logstash.
 
+#### Logstash environment
+untuk menjalankan docker-compose terlebih dahulu set environment workdir yang berisi log untuk diproses
+```bash
+# pada windows
+SET workdir=C:\Worksite\
+
+# pada linux
+workdir=C:\Worksite\
+
+```
+
 ### Run containers   
 How to run:   
 `docker-compose --project-name elk_services -f ./docker-compose-elk.yml up -d`
+
 
 ### Stop containers
 also Remove containers for services not defined in the Compose file and named volumes declared in the `volumes` section of the Compose file and anonymous volumes attached to containers.   
