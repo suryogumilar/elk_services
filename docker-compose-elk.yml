@@ -34,6 +34,7 @@ services:
     volumes:
       - ./logstash/conf/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline/:/usr/share/logstash/pipeline/
+      - ./logstash/patterns/:/etc/logstash/patterns/
     ports:
       - 9600:9600
       - "5044:5044/tcp"
