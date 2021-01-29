@@ -138,7 +138,8 @@ berikut contoh langkah setting dashboard (pie chart presentase)
    pastikan log dari logstash ada dalam daftar indices
  - akses [index pattern](http://localhost:5601/app/management/kibana/indexPatterns) untuk membuat entry (Create index pattern)   
      - Define an index pattern: pilih index logstash yang tersedia 
-     - pilih index pattern id 
+     - pilih primary time field yang akan digunakan sebagai global time filter. Lalu klik 'Create Index Pattern'
+     - edit fields yang ada dalam index yang telah dibuat
  - akses [dashboard](http://localhost:5601/app/dashboards) untuk membuat tampilan
      - create new dashboard
      - Add an existing or new object to dashboard
@@ -156,6 +157,7 @@ berikut contoh langkah setting dashboard (pie chart presentase)
  - https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html
  - https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html
  - https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-log.html
+ - https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
 
 ### grok
  - https://grokdebug.herokuapp.com/patterns#
