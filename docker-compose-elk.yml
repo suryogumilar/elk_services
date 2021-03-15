@@ -8,8 +8,8 @@ services:
       - ${elasticsearch_data}:/usr/share/elasticsearch/data
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     ports:
-      - 9200:9200
-      - 9300:9300
+      - ${elastic_port1}:9200
+      - ${elastic_port2}:9300
     environment:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -23,7 +23,7 @@ services:
     container_name: kibana-service
     image: docker.elastic.co/kibana/kibana:7.10.2
     ports: 
-      - 5601:5601
+      - ${kibana_port}:5601
     volumes:
       - ./kibana/config/:/usr/share/kibana/config/
     labels:
@@ -37,9 +37,9 @@ services:
       - ./logstash/patterns/:/etc/logstash/patterns/
       - ${workdir}:/mnt/workdir/
     ports:
-      - 9600:9600
-      - "5044:5044/tcp"
-      - "5044:5044/udp"
+      - ${logstash_port1}:9600
+      - "${logstash_port2}:5044/tcp"
+      - "${logstash_port2}:5044/udp"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     labels:

@@ -21,6 +21,17 @@ SET workdir=C:\Worksite\
 # pada linux
 workdir=C:\Worksite\
 
+
+## setting port:
+
+### in windows
+SET elastic_port1=9200
+SET elastic_port2=9300
+SET kibana_port=5601
+SET logstash_port1=9600
+SET logstash_port2=5044
+
+# next, coba pake file .env
 ```
 
 ### Run containers   
