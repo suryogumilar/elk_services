@@ -172,3 +172,8 @@ berikut contoh langkah setting dashboard (pie chart presentase)
 
 ### grok
  - https://grokdebug.herokuapp.com/patterns#
+ 
+### Docker env_file
+`env_file` diload jika container sudah jalan, jadi jikalau mau passed argument ke docker compose up, gunakan `.env`
+
+ - https://stackoverflow.com/questions/64405332/docker-compose-env-file-only-loading-env-but-not-a-specific-name
